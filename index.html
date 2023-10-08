@@ -1,45 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Electron Button App</title>
+  <title>Electron Note-Taking App</title>
 </head>
 <body>
-  <h1>Simple Electron Button App</h1>
-  <button id="button1">Button 1</button>
-  <button id="button2">Button 2</button>
-  <button id="select-file">Select a File</button>
-  <div id="content"></div>
-
-
-  <script>
-    // Add button click event listeners
-    const button1 = document.getElementById('button1');
-    const button2 = document.getElementById('button2');
-
-    button1.addEventListener('click', () => {
-      alert('Button 1 clicked!');
-    });
-
-    button2.addEventListener('click', () => {
-      alert('Button 2 clicked!');
-    });
-    const { ipcRenderer } = require('electron');
-  const markdownit = require('markdown-it')();
-
-  const { ipcRenderer } = require('electron');
-
-  ipcRenderer.on('open-file', (event, data) => {
-    const contentDiv = document.getElementById('content');
-
-    if (data.fileType === '.md') {
-      // Render Markdown content
-      contentDiv.innerHTML = markdownit.render(data.content);
-    } else {
-      // Display plain text content
-      contentDiv.innerText = data.content;
-    }
-  });
-  </script>
-</body>
+  <h1>Note-Taking App</h1>
+    <input type="text" id="noteTitle" placeholder="Note Title"><br>
+    <textarea id="noteContent" placeholder="Note Content"></textarea><br>
+    <button id="saveButton">Save Note</button>
+    <button id="loadButton">Load Note</button>
+    <div id="savedNotes"></div>
+    <script src="renderer.js"></script>
+  </body>
 </html>
-

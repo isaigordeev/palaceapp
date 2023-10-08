@@ -11,7 +11,7 @@ function createWindow() {
   });
 
   // Load an HTML file into the window
-  win.loadFile('index.html');
+  win.loadFile('index0.html');
 }
 
 // Create the main window when the app is ready

@@ -16,7 +16,7 @@ function createWindow() {
     icon: path.join(__dirname, 'icon.png'),
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('index0.html');
 
   // Open the DevTools if needed
   // mainWindow.webContents.openDevTools();
