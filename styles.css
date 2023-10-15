@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially, the panel is hidden to the right */
+    width: 300px;
+    height: 100%;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    transition: right 0.3s ease;
+}
+
+#panel p {
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
