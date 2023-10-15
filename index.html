@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Electron Note-Taking App</title>
+  <title>Main Window</title>
 </head>
 <body>
-  <h1>Note-Taking App</h1>
-    <input type="text" id="noteTitle" placeholder="Note Title"><br>
-    <textarea id="noteContent" placeholder="Note Content"></textarea><br>
-    <button id="saveButton">Save Note</button>
-    <button id="loadButton">Load Note</button>
-    <div id="savedNotes"></div>
-    <script src="renderer.js"></script>
-  </body>
+<h1>Main Window</h1>
+<button id="openNewWindow">Open New Window</button>
+<script>
+    document.getElementById('openNewWindow').addEventListener('click', () => {
+        window.open('newWindow.html', 'New Window', 'width=400,height=300');
+    });
+</script>
+</body>
 </html>
