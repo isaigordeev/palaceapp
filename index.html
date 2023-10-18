@@ -17,6 +17,10 @@
     <div class="line" contenteditable="true">This is a writable line.</div>
   </div>
 
+  <div id="markdown-content">
+    <div class="line" contenteditable="true"></div>
+  </div>
+
 <script src="renderer.js"></script>
 <script>
     function addLine() {
@@ -35,6 +39,27 @@
             container.removeChild(lines[lines.length - 1]);
         }
     }
+
+    fetch('example.md')
+        .then(response => response.text())
+        .then(markdown => {
+            const lines = markdown.split('\n');
+            const container = document.getElementById('markdown-content');
+
+            // Loop through each line and insert it into the HTML
+            lines.forEach(line => {
+                const div = document.createElement('div');
+                // newLine.className = "line";
+                div.contentEditable = true;
+                // newLine.textContent = "New line here.";
+
+                div.textContent = line;
+                container.appendChild(div);
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
   </script>
 </body>
 </html>

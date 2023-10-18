@@ -2,12 +2,14 @@
 <html>
 <head>
   <title>Markdown to HTML Lines</title>
-  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/to-markdown@3.0.1/dist/to-markdown.min.js"></script>
+
 </head>
 <body>
 <div id="markdown-content">
   <div class="line" contenteditable="true"></div>
 </div>
+<button id="convert-button">Convert to Markdown</button>
 <script>
     // Fetch the Markdown file and convert it to HTML
     fetch('example.md')
@@ -30,6 +32,33 @@
         .catch(error => {
             console.error(error);
         });
+
+    // Function to convert HTML content to Markdown
+    function convertToMarkdown() {
+        const htmlContent = document.getElementById('markdown-content').innerText;
+        // const markdownContent = toMarkdown(htmlContent);
+        const lines = htmlContent.split('\n'); // Split text into lines
+        let markdownContent = '';
+
+        lines.forEach(line => {
+            const markdownLine = toMarkdown(line); // Convert each line
+            markdownContent += markdownLine + '\n'; // Append to the result
+        });
+
+        // Create a Blob to save the content as a file
+        const blob = new Blob([markdownContent], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+
+        // Create a download link and trigger a click event to save the file
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'converted.md';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    // Add an event listener to the button
+    document.getElementById('convert-button').addEventListener('click', convertToMarkdown);
 </script>
 </body>
 </html>
