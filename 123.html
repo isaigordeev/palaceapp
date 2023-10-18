@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Writable Divs</title>
+  <style>
+      .line {
+          border: 1px solid #000;
+          margin: 5px;
+          padding: 5px;
+      }
+  </style>
+</head>
+<body>
+<button onclick="addLine()">Add Line</button>
+<button onclick="deleteLine()">Delete Line</button>
+<div id="container">
+  <div class="line" contenteditable="true">This is a writable line.</div>
+</div>
+
+<script>
+    function addLine() {
+        const container = document.getElementById("container");
+        const newLine = document.createElement("div");
+        newLine.className = "line";
+        newLine.contentEditable = true;
+        newLine.textContent = "New line here.";
+        container.appendChild(newLine);
+    }
+
+    function deleteLine() {
+        const container = document.getElementById("container");
+        const lines = container.getElementsByClassName("line");
+        if (lines.length > 0) {
+            container.removeChild(lines[lines.length - 1]);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Line Container on Enter</title>
+</head>
+<body>
+<div id="text_space" contenteditable="true" style="border: 1px solid #000; padding: 5px;"></div>
+
+<div id="container">
+  <div class="line" contenteditable="true">This is a writable line.</div>
+</div>
+
+<script>
+    const container = document.getElementById("container");
+
+    container.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault(); // Prevent the default behavior (line break)
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            const newLineContainer = document.createElement("div");
+
+            const newLine = document.createElement("div");
+            newLine.className = "line";
+            newLine.contentEditable = true;
+            newLine.textContent = "New line here.";
+
+
+            newLineContainer.contentEditable = true;
+            newLineContainer.innerHTML = '<br>'; // Add a line break in the new container
+            // container.insertBefore(newLineContainer, container.childNodes[range.endOffset]);
+            container.appendChild(newLine)
+            range.selectNodeContents(newLineContainer);
+            range.collapse(true);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    });
+
+    function addLine() {
+        const container = document.getElementById("container");
+        const newLine = document.createElement("div");
+        newLine.className = "line";
+        newLine.contentEditable = true;
+        newLine.textContent = "New line here.";
+        container.appendChild(newLine);
+    }
+
+</script>
+</body>
+</html>
