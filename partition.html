@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markdown to HTML Lines</title>
+  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+</head>
+<body>
+<div id="markdown-content">
+  <div class="line" contenteditable="true"></div>
+</div>
+<script>
+    // Fetch the Markdown file and convert it to HTML
+    fetch('example.md')
+        .then(response => response.text())
+        .then(markdown => {
+            const lines = markdown.split('\n');
+            const container = document.getElementById('markdown-content');
+
+            // Loop through each line and insert it into the HTML
+            lines.forEach(line => {
+                const div = document.createElement('div');
+                // newLine.className = "line";
+                div.contentEditable = true;
+                // newLine.textContent = "New line here.";
+
+                div.textContent = line;
+                container.appendChild(div);
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+</body>
+</html>
