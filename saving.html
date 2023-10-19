@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+      function saveMarkdownToFile() {
+          // Markdown content to be saved
+          const markdownContent = "# My Markdown Document\n\nThis is some content in **Markdown** format.";
+
+          // Create a Blob containing the Markdown content
+          const blob = new Blob([markdownContent], { type: 'text/markdown' });
+
+          // Create a download link
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'myMarkdownFile.md'; // Specify the file name with the .md extension
+
+          // Trigger a click event on the download link to prompt the user to save the file
+          a.click();
+      }
+  </script>
+</head>
+<body>
+<button onclick="saveMarkdownToFile()">Save Markdown File</button>
+</body>
+</html>

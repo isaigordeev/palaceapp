@@ -20,3 +20,19 @@ body {
 .hidden {
     display: none;
 }
+
+.note-space {
+    position: relative;
+    /*left: 10px;*/
+}
+.writable-note-space {
+    position: relative;
+    left: 20px;
+}
+.markdown-content-line-active {
+    color: red;
+}
+
+body {
+    margin: 20px;
+}

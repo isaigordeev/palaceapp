@@ -1,6 +1,10 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
+const fs = require('fs');
+const path = require('path');
 
 let mainWindow;
+let fileWindow;
+
 
 function createMainWindow() {
     mainWindow = new BrowserWindow({ width: 800, height: 600 });
@@ -10,7 +14,9 @@ function createMainWindow() {
     });
 }
 
+
 app.on('ready', createMainWindow);
+
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
