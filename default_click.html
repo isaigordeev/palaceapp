@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+      .myClass {
+          background-color: yellow;
+          cursor: pointer;
+      }
+  </style>
+  <script>
+      window.addEventListener("DOMContentLoaded", function() {
+          // Add an event listener to all elements with the class "myClass"
+          var elements = document.querySelectorAll(".myClass");
+
+          elements.forEach(function(element) {
+              element.addEventListener("click", function() {
+                  // Your event handling code here
+                  alert("Element with class 'myClass' clicked!");
+              });
+          });
+      });
+  </script>
+</head>
+<body>
+<div class="myClass">Element 1</div>
+<div>Element 2</div>
+<div class="myClass">Element 3</div>
+</body>
+</html>

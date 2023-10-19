@@ -3,8 +3,8 @@
 <head>
   <title>Main Window</title>
   <style>
-      .custom-div {
-          margin: 10px;
+      .markdown-content-line-active {
+          color: red;
       }
 
       body {
@@ -26,10 +26,6 @@
     <button onclick="deleteLine()">Delete Line</button>
 
     <div class="writable-note-space">
-      <div class="markdown-content-line" contenteditable="true" id="active">
-        First Line
-      </div>
-
 <!--      <div class="markdown-content-line" contenteditable="false" id="non-active">-->
 <!--        Here-->
 <!--      </div>-->
@@ -40,6 +36,27 @@
 <script src="renderer.js"></script>
 
 <script>
+
+    window.addEventListener("DOMContentLoaded", function() {
+        // Add an event listener to all elements with the class "myClass"
+        var elements = document.querySelectorAll(".markdown-content-line");
+
+        elements.forEach(function(element) {
+            element.addEventListener("click", function() {
+                // if (element.classList.contains("markdown-content-line")) {
+                //     element.classList.remove("markdown-content-line");
+                //     element.classList.add("markdown-content-line-active");
+                // } else {
+                //     element.classList.remove("markdown-content-line-active");
+                //     element.classList.add("markdown-content-line");
+                // }
+                element.classList.remove("markdown-content-line");
+                element.classList.add("markdown-content-line-active");
+            });
+        });
+    });
+
+
     function addLine() {
       const container = document.getElementsByClassName("writable-note-space").item(0);
 
@@ -48,7 +65,15 @@
       newLine.className = "markdown-content-line";
       newLine.contentEditable = true;
       newLine.textContent = "custom text";
-
+      newLine.addEventListener("click", function() {
+          if (newLine.classList.contains("markdown-content-line")) {
+              newLine.classList.remove("markdown-content-line");
+              newLine.classList.add("markdown-content-line-active");
+          } else {
+              newLine.classList.remove("markdown-content-line-active");
+              newLine.classList.add("markdown-content-line");
+          }
+      });
       container.appendChild(newLine);
     }
 
@@ -61,11 +86,13 @@
         }
     }
 
+
+
     fetch('example.md')
         .then(response => response.text())
         .then(markdown => {
             const lines = markdown.split('\n');
-            const container = document.getElementById('writable-note-space');
+            const container = document.getElementsByClassName('writable-note-space').item(0);
 
             // Loop through each line and insert it into the HTML
             lines.forEach(line => {
