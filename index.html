@@ -37,25 +37,6 @@
 
 <script>
 
-    window.addEventListener("DOMContentLoaded", function() {
-        // Add an event listener to all elements with the class "myClass"
-        var elements = document.querySelectorAll(".markdown-content-line");
-
-        elements.forEach(function(element) {
-            element.addEventListener("click", function() {
-                // if (element.classList.contains("markdown-content-line")) {
-                //     element.classList.remove("markdown-content-line");
-                //     element.classList.add("markdown-content-line-active");
-                // } else {
-                //     element.classList.remove("markdown-content-line-active");
-                //     element.classList.add("markdown-content-line");
-                // }
-                element.classList.remove("markdown-content-line");
-                element.classList.add("markdown-content-line-active");
-            });
-        });
-    });
-
 
     function addLine() {
       const container = document.getElementsByClassName("writable-note-space").item(0);
@@ -65,8 +46,16 @@
       newLine.className = "markdown-content-line";
       newLine.contentEditable = true;
       newLine.textContent = "custom text";
+
       newLine.addEventListener("click", function() {
           if (newLine.classList.contains("markdown-content-line")) {
+
+              if(container.getElementsByClassName("markdown-content-line-active").length !== 0){
+                  var activeLine = container.getElementsByClassName("markdown-content-line-active").item(0);
+                  activeLine.classList.remove("markdown-content-line-active");
+                  activeLine.classList.add("markdown-content-line");
+              }
+
               newLine.classList.remove("markdown-content-line");
               newLine.classList.add("markdown-content-line-active");
           } else {
@@ -100,8 +89,27 @@
                 div.className = "markdown-content-line";
                 div.contentEditable = true;
                 // newLine.textContent = "New line here.";
-
                 div.textContent = line;
+
+                div.addEventListener("click", function() {
+                    if (div.classList.contains("markdown-content-line")) {
+
+                        if(container.getElementsByClassName("markdown-content-line-active").length !== 0){
+                            var activeLine = container.getElementsByClassName("markdown-content-line-active").item(0);
+                            activeLine.classList.remove("markdown-content-line-active");
+                            activeLine.classList.add("markdown-content-line");
+                        }
+
+
+                        div.classList.remove("markdown-content-line");
+                        div.classList.add("markdown-content-line-active");
+                    } else {
+                        div.classList.remove("markdown-content-line-active");
+                        div.classList.add("markdown-content-line");
+                    }
+                });
+                
+                
                 container.appendChild(div);
             });
         })
