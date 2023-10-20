@@ -1,8 +1,6 @@
-
+// const {ipcRenderer} = require('electron')
 
 const folderPath = '/Users/isaigordeev/Desktop/palaceapp'; // Replace with the actual folder path
-
-
 
 
 const openPanelButton = document.getElementById('openPanelButton');
@@ -21,7 +19,14 @@ openPanelButton.addEventListener('click', () => {
     }
 });
 
-selectFileButton.addEventListener('click', popWindow);
+// function popWindow1(){
+//     ipcRenderer.on('send-file-list', (event, array) => {
+//         console.log('Received array from main process:', array);
+//     });
+// }
+//
+//
+// selectFileButton.addEventListener('click', popWindow1);
 
 closePanelButton.addEventListener('click', () => {
     panel.style.right = '-300px'; // Slide the panel out to the right
@@ -66,37 +71,3 @@ function deleteLine() {
     }
 }
 
-function popWindow() {
-    const container = document.getElementsByClassName("note-space").item(0);
-
-
-    fs.readdir(folderPath, (err, files) => {
-        if (err) {
-            console.error('Error reading folder:', err);
-            return;
-        }
-
-        files.forEach((file) => {
-            const filePath = path.join(folderPath, file);
-            fs.stat(filePath, (err, stats) => {
-                if (err) {
-                    console.error('Error getting file stats:', err);
-                    return;
-                }
-
-                if (stats.isFile()) {
-                    console.log(file); // Print the file name
-
-                    const newLine = document.createElement("div");
-
-                    newLine.className = "markdown-content-line";
-                    newLine.contentEditable = false;
-                    newLine.textContent = file;
-
-                    container.appendChild(newLine);
-                }
-
-            });
-        });
-    });
-}
