@@ -85,31 +85,3 @@ app.on('activate', () => {
         createMainWindow();
     }
 });
-
-
-function popWindow() {
-    const container = document.getElementsByClassName("note-space").item(0);
-
-
-    fs.readdir(folderPath, (err, files) => {
-        if (err) {
-            console.error('Error reading folder:', err);
-            return;
-        }
-
-        files.forEach((file) => {
-            const filePath = path.join(folderPath, file);
-            fs.stat(filePath, (err, stats) => {
-                if (err) {
-                    console.error('Error getting file stats:', err);
-                    return;
-                }
-
-                if (stats.isFile()) {
-
-                }
-
-            });
-        });
-    });
-}
