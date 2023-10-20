@@ -64,12 +64,12 @@ app.on('ready',
 
         // mainWindow.webContents.once('dom-ready', () => {
         //     // Send the array to the renderer process when it's ready
-        //     mainWindow.webContents.send('file-list', result.files);
+        //     mainWindow.webContents.send('response-array', result.files);
         // });
 
         ipcMain.on('request-array', (event) => {
             // Send the array to the renderer process
-            event.sender.send('response-array', dataArray);
+            event.sender.send('response-array', result.files);
         });
     });
 
