@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 
+
 function popWindowCheck(){
     console.log('requested array from main process');
 
@@ -19,6 +20,18 @@ function popWindowFileList(){
     ipcRenderer.send('request-array');
 
     const container = document.getElementsByClassName("writable-note-space").item(0);
+
+    const subcontainer = document.createElement('div');
+    subcontainer.className = "subcontainer";
+
+    subcontainer.addEventListener("click", function() {
+        // const subcontainer_existant = container.getElementsByClassName("subcontainer");
+        subcontainer.parentNode.removeChild(subcontainer);
+    });
+
+    container.append(subcontainer);
+
+
     const folderPath = '/Users/isaigordeev/Desktop/palaceapp';
 
     ipcRenderer.on('response-array', (event, array) => {
@@ -36,7 +49,7 @@ function popWindowFileList(){
                     div.contentEditable = true;
                     // newLine.textContent = "New line here.";
                     div.textContent = file;
-                    container.append(div);
+                    subcontainer.append(div);
                 }
 
             });
