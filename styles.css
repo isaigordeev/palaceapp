@@ -17,35 +17,62 @@ body {
     padding: 10px;
 }
 
-.hidden {
-    display: none;
-}
+/*.hidden {*/
+/*    display: none;*/
+/*}*/
 
 .note-space {
-    position: relative;
-    /*left: 10px;*/
+    left: 10px;
 }
+
+.start-page {
+    /*display: flex;*/
+    position: relative;
+
+    left: 100px;
+    top: 100px;
+    margin: 0;
+}
+
 .writable-note-space {
     position: relative;
     left: 20px;
 }
+
+.writable-note-space-hidden {
+    position: relative;
+    left: 20px;
+    display: none;
+}
+
+
 .markdown-content-line-active {
     color: red;
 }
 
-.subcontainer{
-    left: 200px;
+.file-list-container{
+    /*left: 200px;*/
     z-index: 1;
 
     /*display: none; !* Initially hidden *!*/
     position: absolute;
     /*left: 0;*/
     background-color: #fad0d0; /* Set the background color you prefer */
-    /*width: 200px; !* Set the desired width *!*/
-    /*height: 100px; !* Set the desired height *!*/
-    border: 1px solid #000;
+    left: 100px;
+    top: 100px;
+    width: 300px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    /*border: 1px solid #000;*/
 }
 
 body {
     margin: 20px;
+}
+
+#selectFileButton{
+    position: relative;
+    /*color: #0000cc;*/
+    outline: none;
+    /*border: none;*/
+    left: 35px;
 }
