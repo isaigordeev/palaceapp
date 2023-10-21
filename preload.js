@@ -19,7 +19,7 @@ function popWindowCheck(){
 function popWindowFileList(){
     ipcRenderer.send('request-array');
 
-    const container = document.getElementsByClassName("writable-note-space").item(0);
+    const container = document.getElementsByClassName("note-space").item(0);
 
     const subcontainer = document.createElement('div');
     subcontainer.className = "subcontainer";
@@ -29,7 +29,7 @@ function popWindowFileList(){
         subcontainer.parentNode.removeChild(subcontainer);
     });
 
-    container.append(subcontainer);
+    container.prepend(subcontainer);
 
 
     const folderPath = '/Users/isaigordeev/Desktop/palaceapp';

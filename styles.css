@@ -34,8 +34,16 @@ body {
 }
 
 .subcontainer{
-    position: relative;
-    left: 40px;
+    left: 200px;
+    z-index: 1;
+
+    /*display: none; !* Initially hidden *!*/
+    position: absolute;
+    /*left: 0;*/
+    background-color: #fad0d0; /* Set the background color you prefer */
+    /*width: 200px; !* Set the desired width *!*/
+    /*height: 100px; !* Set the desired height *!*/
+    border: 1px solid #000;
 }
 
 body {

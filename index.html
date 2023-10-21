@@ -25,6 +25,14 @@
       }
   </style>
   <link rel="stylesheet" href="styles.css">
+
+<!--  <link rel="stylesheet" href="codemirror.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.js"></script>
+
+  <!-- Include the CodeMirror Vim mode -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/keymap/vim.js"></script>
+
 </head>
 <body>
   <h1>Main Window</h1>
@@ -42,11 +50,13 @@
 <!--      <div class="markdown-content-line" contenteditable="false" id="non-active">-->
 <!--        Here-->
 <!--      </div>-->
+      <label for="editor"></label><textarea id="editor"></textarea>
     </div>
   </div>
 
-
 <script src="renderer.js"></script>
+<script src="script.js"></script>
+
 
 <script>
     fetch('example.md')

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Window</title>
+  <link rel="stylesheet" href="styles.css">
+<!--  <link rel="stylesheet" href="codemirror.css">-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/keymap/vim.js"></script>
+  <script src="renderer.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+<h1>Note</h1>
+<button id="openFileButton">Select a File</button>
+
+<div class="note-space">
+  <div class="writable-note-space">
+    <label for="editor"></label><textarea id="editor"></textarea>
+  </div>
+</div>
+
+
+<script>
+
+    fetch('example.md')
+        .then(response => response.text())
+
+        .then(markdown => {
+            const lines = markdown.split('\n');
+            const container = document.getElementsByClassName('writable-note-space').item(0);
+
+            // Loop through each line and insert it into the HTML
+
+            // lines.forEach(line => {
+            //     writeArrayToEditor(line);
+            // });
+        })
+
+        .catch(error => {
+            console.error(error);
+        });
+
+</script>
+</body>
+</html>

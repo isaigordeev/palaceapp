@@ -17,7 +17,7 @@ function createMainWindow() {
 
     console.log(__dirname);
 
-    mainWindow.loadFile('index.html');
+    mainWindow.loadFile('interface.html');
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
