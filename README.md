@@ -31,7 +31,7 @@ Simple notetaking application is in progress of dev
 - **Date** + **time** can divide a note for updating ^6db043
 - Weekly notes contain plans for the next week and thoughts of the past ^0caf0d
 - [[PALACE]] can't be linked by any other notes (*except fundamental like [[START PAGE]]) ^07198f
-- In **vault** directory must only be nothing except folders and [[PALACE]]. Other note are arranged into their special [[PALACE#Folders|folders]]. If there is no relevant [[PALACE#Folders|folder]] create and [[PALACE#^b7328e|#lige]] a new relevant one.
+- In **vault** directory must only be nothing except folders and [[PALACE]]. Other note are arranged into their special [[PALACE#Folders|folders]]. If there is no relevant [[PALACE#Folders|folder]] create a new relevant one or place to the Heap folder.
 
 #### Note structure
 
