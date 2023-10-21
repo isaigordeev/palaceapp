@@ -3,21 +3,21 @@
 const folderPath = '/Users/isaigordeev/Desktop/palaceapp'; // Replace with the actual folder path
 
 
-const openPanelButton = document.getElementById('openPanelButton');
+// const openPanelButton = document.getElementById('openPanelButton');
 const closePanelButton = document.getElementById('closePanelButton');
 const selectFileButton = document.getElementById('openFileButton');
 const panel = document.getElementById('panel');
 
-openPanelButton.addEventListener('click', () => {
-
-    if(panel.classList.contains("hidden")) {
-        panel.style.right = '0'; // Slide the panel in from the right
-        panel.classList.remove('hidden');
-    } else {
-        panel.style.right = '-300px'; // Slide the panel out to the right
-        panel.classList.add('hidden');
-    }
-});
+// openPanelButton.addEventListener('click', () => {
+//
+//     if(panel.classList.contains("hidden")) {
+//         panel.style.right = '0'; // Slide the panel in from the right
+//         panel.classList.remove('hidden');
+//     } else {
+//         panel.style.right = '-300px'; // Slide the panel out to the right
+//         panel.classList.add('hidden');
+//     }
+// });
 
 // function popWindow1(){
 //     ipcRenderer.on('send-file-list', (event, array) => {
@@ -28,10 +28,10 @@ openPanelButton.addEventListener('click', () => {
 //
 // selectFileButton.addEventListener('click', popWindow1);
 
-closePanelButton.addEventListener('click', () => {
-    panel.style.right = '-300px'; // Slide the panel out to the right
-    panel.classList.add('hidden');
-});
+// closePanelButton.addEventListener('click', () => {
+//     panel.style.right = '-300px'; // Slide the panel out to the right
+//     panel.classList.add('hidden');
+// });
 
 
 function addLine() {

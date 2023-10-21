@@ -1,20 +1,8 @@
 const { ipcRenderer } = require('electron');
-const fs = require("fs");
-const path = require("path");
 
 
 
-function popWindowCheck(){
-    console.log('requested array from main process');
 
-    ipcRenderer.send('request-array');
-
-    ipcRenderer.on('response-array', (event, array) => {
-        console.log('Received array from main process:', array);
-    });
-
-    console.log('received array from main process');
-}
 
 function addEditableNote() {
     const customDiv = document.createElement("div");
@@ -39,7 +27,7 @@ function addEditableNote() {
 
     customDiv.appendChild(h1Element);
     customDiv.appendChild(labelElement);
-    customDiv.appendChild(textareaElement);
+    customDiv.appendChild(textarea);
 
     document.getElementsByClassName("note-space").item(0).appendChild(customDiv);
 }
@@ -74,30 +62,21 @@ function popWindowFileList(){
     container.prepend(fileListContainer);
 
 
-    const folderPath = '/Users/isaigordeev/Desktop/palaceapp';
+    const folderPath = '/Users/isaigordeev/Desktop/2023/palaceapp';
 
     ipcRenderer.on('response-array', (event, array) => {
+        console.log(array);
+
         array.forEach((file) => {
-            const filePath = path.join(folderPath, file);
-            fs.stat(filePath, (err, stats) => {
-                if (err) {
-                    console.error('Error getting file stats:', err);
-                    return;
-                }
+            const div = document.createElement('div');
+            div.className = "markdown-content-line";
+            // div.contentEditable = true;
+            // newLine.textContent = "New line here.";
+            div.textContent = file;
 
-                if (stats.isFile()) {
-                    const div = document.createElement('div');
-                    div.className = "markdown-content-line";
-                    // div.contentEditable = true;
-                    // newLine.textContent = "New line here.";
-                    div.textContent = file;
-                    fileListContainer.append(div);
-                }
-
+            fileListContainer.append(div);
             });
         });
-    });
-
 }
 
 window.onload = () => {

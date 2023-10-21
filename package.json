@@ -1,20 +1,15 @@
 {
-  "name": "electron-button-app",
+  "name": "palaceapp",
   "version": "1.0.0",
+  "description": "Simple notetaking application is in progress of dev",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "electron": "^13.1.0",
-    "electron-builder": "^24.6.4"
-  },
-  "build": {
-  "appId": "com.example.my-electron-app",
-  "productName": "My Electron App",
-  "win": {
-    "target": "portable"
+    "electron": "^27.0.2"
   }
- }
 }

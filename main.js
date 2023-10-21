@@ -17,7 +17,7 @@ function createMainWindow() {
 
     console.log(__dirname);
 
-    mainWindow.loadFile('interface.html');
+    mainWindow.loadFile('interface.html')
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
@@ -58,7 +58,7 @@ app.on('ready',
     () => {
         createMainWindow();
 
-        const directoryPath = '/Users/isaigordeev/Desktop/palaceapp';
+        const directoryPath = '/Users/isaigordeev/Desktop/2023/palaceapp';
         const result = listFilesAndDirs(directoryPath);
         console.log(result.files);
 
